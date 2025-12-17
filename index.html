@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modus - 專屬穿搭管理系統</title>
+    <style>
+        /* 根據企劃書  設定品牌色調 */
+        :root {
+            --primary-color: #C9B9CE;   /* 網頁主色  */
+            --bg-color: #FCFBDC;        /* 背景色  */
+            --accent-color: #FFE4A9;    /* 強調色/選項  */
+            --text-color: #333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* 導覽列 [cite: 16, 17, 18, 19] */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Hero Section [cite: 9, 25] */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(201,185,206,0.5), rgba(201,185,206,0.5)), url('your-logo-bg.jpg');
+            background-size: cover;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        .hero p { font-size: 1.2rem; font-style: italic; }
+
+        /* 內容區塊 */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background-color: #ffd06b; }
+
+        footer { text-align: center; padding: 2rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home">首頁</a>
+        <a href="#brand">探索品牌</a>
+        <a href="#design">美學設計</a>
+        <a href="#ai">AI協作</a>
+        <a href="#reflection">成果與反思</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Modus</h1>
+        <p>「智慧穿搭，自信啟程。」</p> </header>
+
+    <div class="container">
+        <section class="card">
+            <h2>品牌故事館</h2>
+            <h3>專題動機</h3>
+            <p>我們發現身邊的同學們有時會有穿搭的困擾，因此想透過製作這類的穿搭管理系統來幫助他們。 [cite: 27]</p>
+            <h3>專題目的</h3>
+            <p>讓大家能夠獲得穿搭的知識，且無須每天花時間搭配衣服。 [cite: 27]</p>
+            <a href="#brand" class="btn">探索更多</a>
+        </section>
+
+        <section class="card">
+            <h2>團隊成員</h2>
+            <ul>
+                <li>組長：09 鄭禾宜 [cite: 27, 88]</li>
+                <li>組員：02 朱映璇、06 胡詠安、10 鄭芳伃 [cite: 27, 88]</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 Modus - 松山高級中學 科技應用專題第四組 [cite: 2, 5, 6]
+    </footer>
+
+</body>
+</html>
