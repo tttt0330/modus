@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modus - 專屬穿搭管理系統</title>
     <style>
-        /* 根據企劃書 設定品牌色調 */
+        /* 根據企劃書設定品牌色調 */
         :root {
             --primary-color: #C9B9CE;   /* 網頁主色 (紫色) */
             --bg-color: #808080;        /* 背景色 (淺米色) */
@@ -13,10 +13,15 @@
             --text-color: #333;         /* 深灰色文字 */
         }
 
+        /* 全域設定 */
+        html {
+            scroll-behavior: smooth; /* 點擊導覽列時會平滑滾動 */
+        }
+
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif; /* 確保使用黑體 */
+            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
             margin: 0;
             line-height: 1.6;
         }
@@ -29,6 +34,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         nav a {
@@ -37,67 +43,69 @@
             color: white;
             font-weight: bold;
             font-size: 1.1rem;
+            transition: 0.3s;
         }
-        
-        /* --- Hero Section (橫幅區域) 重點修改 --- */
-        /* --- Hero Section (橫幅區域) 修改為純白 --- */
-    .hero {
-        height: 60vh; 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        
-        /* 改為純白背景 */
-        background-color: #ffffff; 
-    }
 
-    /* Logo 樣式：保留陰影，讓白色 Logo 在白色背景中跳脫出來 */
-    .hero-logo {
-        width: 250px; 
-        height: auto;
-        margin-bottom: 2rem;
-        background-color: #fff; /* 確保 Logo 內部是白的 */
-    }
+        nav a:hover {
+            color: var(--accent-color);
+        }
 
-/* 標語樣式 */
-    .tagline {
-        font-size: 1.4rem;
-        font-weight: 900;
-        font-style: italic;
-        color: #1a1a1a; /* 使用深黑色對比 */
-        letter-spacing: 2px;
-    }
-        /* --------------------------------------- */
+        /* --- Hero Section (純白橫幅) --- */
+        .hero {
+            height: 60vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #ffffff; /* 依要求改為純白 */
+        }
 
+        .hero-logo {
+            width: 250px; 
+            height: auto;
+            margin-bottom: 2rem;
+            /* 增加陰影讓白色 Logo 在白色背景中更有層次 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+        }
 
-        /* 內容區塊 (維持不變) */
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 900;
+            font-style: italic;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        /* 內容容器 */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 50px auto;
             padding: 0 20px;
         }
 
+        /* 卡片通用樣式 */
         .card {
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* 更柔和的陰影 */
-            margin-bottom: 2.5rem;
-            border-top: 5px solid var(--primary-color); /* 增加品牌色邊條 */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            border-top: 5px solid var(--primary-color);
         }
 
-        h2 { color: #666; margin-bottom: 0.5rem;}
-        h3 { color: #666; margin-bottom: 0.5rem; }
+        h2 { color: #666; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        h3 { color: #666; margin-top: 1.5rem; }
 
+        /* 按鈕樣式 */
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
             padding: 12px 30px;
-            border-radius: 30px; /* 圓角按鈕 */
+            border-radius: 30px;
             text-decoration: none;
-            color: #5a4a00; /* 深一點的黃色文字增加對比 */
+            color: #5a4a00;
             font-weight: bold;
             transition: 0.3s;
             margin-top: 1rem;
@@ -105,16 +113,53 @@
 
         .btn:hover { 
             background-color: #ffd06b; 
-            transform: translateY(-3px); /* 滑鼠移上去微微上浮的效果 */
+            transform: translateY(-3px);
             box-shadow: 0 5px 10px rgba(255, 208, 107, 0.4);
+        }
+
+        /* 表格樣式 (展區 B 使用) */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #eee;
+        }
+
+        /* 團隊反思區塊 (展區 D 使用) */
+        .reflection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .member-box {
+            background: #fafafa;
+            padding: 15px;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
         }
 
         footer { 
             text-align: center; 
             padding: 3rem; 
             font-size: 0.9rem; 
-            background-color: #eee;
-            color: #666;
+            background-color: #f0f0f0;
+            color: #888;
+        }
+
+        /* 手機版適應 */
+        @media (max-width: 600px) {
+            .reflection-grid { grid-template-columns: 1fr; }
+            .hero-logo { width: 180px; }
         }
     </style>
 </head>
@@ -125,42 +170,106 @@
         <a href="#brand">探索品牌</a>
         <a href="#design">美學設計</a>
         <a href="#ai">AI協作</a>
-        <a href="#reflection">成果與反思</a>
+        <a href="#reflection">成果反思</a>
     </nav>
 
     <header class="hero" id="home">
         <img src="images/logo.jpg" alt="Modus Logo" class="hero-logo">
-        
         <p class="tagline">MODUS 一個專屬的穿搭管理系統</p> 
     </header>
 
     <div class="container">
-        <section class="card" id="brand">
-            <h2>品牌故事館</h2>
-            <p>「智慧穿搭，自信啟程。」</p>
-            <br>
-            <h3>專題動機</h3>
-            <p>我們發現許多人會有穿搭的困擾，因此想透過穿搭管理系統來幫助他們。</p>
-            <h3>專題目的</h3>
-            <p>讓大家無須每天花時間搭配衣服。</p>
-            <a href="#" class="btn">探索品牌故事</a>
-        </section>
-
+        
         <section class="card">
-            <h2>團隊成員</h2>
-            <ul style="list-style-type: none; padding: 0; font-size: 1.1rem;">
-                <li style="margin-bottom: 10px;">
-                <li>鄭禾宜、朱映璇、胡詠安、鄭芳伃</li>
-            </ul>
+            <h2>品牌故事館</h2>
+            <p style="font-size: 1.2rem; color: var(--primary-color); font-weight: bold;">「智慧穿搭，自信啟程。」</p>
+            <h3>專題動機</h3>
+            <p>我們發現許多人會有穿搭的困擾，因此想透過穿搭管理系統來幫助他們，解決日常生活中選擇障礙的問題。</p>
+            <h3>專題目的</h3>
+            <p>建立一個整合穿搭知識與管理工具的平台，讓使用者無須每天花大量時間搭配衣服，提升效率與自信。</p>
+            <h3>團隊成員</h3>
+            <p>鄭禾宜、朱映璇、胡詠安、鄭芳伃</p>
         </section>
-    </div>
 
-    <footer>
-        &copy; Modus - 松山高級中學 科技應用專題第四組
+        <section class="card" id="brand">
+            <h2>展區 A：探索品牌館</h2>
+            <div style="background: #fdfdfd; padding: 20px; border-radius: 10px;">
+                <h3>品牌定位</h3>
+                <p>• <strong>核心理念：</strong>智慧、專屬、高效<br>
+                   • <strong>使用者分析：</strong>針對對穿搭有困擾、希望節省時間的所有人群。</p>
+            </div>
+            <h3>色彩計畫</h3>
+            <div style="display: flex; gap: 30px; margin-top: 10px; flex-wrap: wrap;">
+                <div style="text-align:center;"><div style="background:#C9B9CE;width:50px;height:50px;border-radius:50%;margin:auto;border:1px solid #ddd;"></div><p>#C9B9CE<br>主色</p></div>
+                <div style="text-align:center;"><div style="background:#FCFBDC;width:50px;height:50px;border-radius:50%;margin:auto;border:1px solid #ddd;"></div><p>#FCFBDC<br>背景</p></div>
+                <div style="text-align:center;"><div style="background:#FFE4A9;width:50px;height:50px;border-radius:50%;margin:auto;border:1px solid #ddd;"></div><p>#FFE4A9<br>強調</p></div>
+            </div>
+        </section>
+
+        <section class="card" id="design">
+            <h2>展區 B：美學設計館</h2>
+            <p>我們在視覺開發中，嚴格遵循「美的形式原理」，確保使用者介面的舒適度：</p>
+            <table>
+                <tr>
+                    <th>形式原理</th>
+                    <th>應用細節</th>
+                </tr>
+                <tr>
+                    <td><strong>統一 (Unified)</strong></td>
+                    <td>所有按鈕與卡片邊框採用一致的圓角與陰影，讓畫面整齊簡潔。</td>
+                </tr>
+                <tr>
+                    <td><strong>對比 (Contrast)</strong></td>
+                    <td>利用輔色背景與強調色按鈕形成視覺對比，引導使用者點擊。</td>
+                </tr>
+                <tr>
+                    <td><strong>調和 (Harmony)</strong></td>
+                    <td>主色的紫色調與淺米色背景和諧共處，營造放鬆的瀏覽體驗。</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="card" id="ai">
+            <h2>展區 C：AI 協作館</h2>
+            <p>本專題高度整合多項生成式 AI 工具，加速產品開發與優化：</p>
+            <ul style="padding-left: 20px;">
+                <li><strong>ChatGPT：</strong>負責文案發想、使用者需求痛點分析。</li>
+                <li><strong>Gemini：</strong>協助 LOGO 構圖建議與品牌插圖生成。</li>
+                <li><strong>Wix：</strong>整合 AI 輔助設計，建立互動式的網頁介面。</li>
+            </ul>
+            <div style="background: #fff9eb; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                <p><strong>協作策略：</strong>運用「角色分配法」將 AI 定位為資深時尚顧問，並透過「反向提示」精準產出符合品牌調性的視覺元素。</p>
+            </div>
+        </section>
+
+        <section class="card" id="reflection">
+            <h2>展區 D：成果與反思</h2>
+            <div class="reflection-grid">
+                <div class="member-box">
+                    <strong>09 鄭禾宜 (組長)</strong>
+                    <p>深刻體會到時間分配的重要性，並學會如何透過 AI 將腦中的穿搭概念轉化為具體成品。</p>
+                </div>
+                <div class="member-box">
+                    <strong>02 朱映璇</strong>
+                    <p>學習到高效的分工模式，並在 AI 協作過程中發現了科技輔助創作的無限可能。</p>
+                </div>
+                <div class="member-box">
+                    <strong>06 胡詠安</strong>
+                    <p>重溫了美學設計的原理，並學會精確地對 AI 提問來獲得理想的設計素材。</p>
+                </div>
+                <div class="member-box">
+                    <strong>10 鄭芳伃</strong>
+                    <p>在製作過程中掌握了網頁互動設計的邏輯，對於數位策展有更深一層的認識。</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="btn">返回頁首</a>
+            </div>
+        </section>
+
+    </div> <footer>
+        &copy; 2024 Modus - 松山高級中學 科技應用專題第四組
     </footer>
 
 </body>
 </html>
-
-
-
