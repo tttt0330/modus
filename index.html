@@ -76,7 +76,37 @@
             letter-spacing: 2px;
             margin: 0;
         }
+        .tagline {
+            display: flex;
+            justify-content: center; /* 讓文字水平置中 */
+        }
 
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;         /* 隱藏未打出的文字 */
+            white-space: nowrap;      /* 強制不換行 */
+            border-right: 3px solid #333; /* 模擬游標，顏色可隨意更換 */
+            font-size: 1.5rem;        /* 依需求調整字體大小 */
+            width: 0;                 /* 初始寬度為 0 */
+    
+    /* 動態設定：
+       typing: 總長度 12 個中文字，花 3 秒打完
+       blink: 游標閃爍效果 */
+            animation: 
+                typing 3s steps(12) forwards, 
+                blink 0.8s infinite;
+        }
+
+/* 打字動畫：將寬度從 0 變為 12em (12個中文字寬) */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 12em; } 
+        }
+
+/* 游標閃爍動畫 */
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
         /* 內容容器 */
         .container {
             max-width: 900px;
@@ -274,6 +304,7 @@
 
 </body>
 </html>
+
 
 
 
